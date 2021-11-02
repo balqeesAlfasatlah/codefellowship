@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header style="display: flex; justify-content : space-around; background-color : #333333;; padding :10px;">
+
+    <h1 style="padding-left:50px; font-size:40px; color : #e6b3ff;">Code Fellows App</h1>
+    <a style="margin:auto; text-decoration: none;border : 3px solid #ccc ;padding :10px;margin-left:60%; color : #e6b3ff;}
+ " href="http://localhost:8080/">Home</a>
+    <span style="color:white" th:text="${username}"></span>
+</header>
+<div style="padding-top:50px;">
+    <img style="width :200px;" src="https://d29fhpw069ctt2.cloudfront.net/clipart/86572/preview/googley-eye-bird-pink_preview_7db3.png" alt=""/>
+    <p>User Name : <span  th:text="${username}"></span></p>
+    <p>First Name : <span  th:text="${firstName}"></span></p>
+    <p>Last Name : <span  th:text="${lastName}"></span></p>
+    <p>Date Of Birth : <span  th:text="${dateOfBirth}"></span></p>
+    <p>Bio : <span  th:text="${bio}"></span></p>
+
+</div>
+
+
+<form th:action="@{/addpost}" method="post">
+    <label>Add Post</label>
+    <textarea field="*{body}" name="body" required></textarea>
+    <input type="submit">
+</form>
+
+<div>
+    <p> My Posts</p>
+
+    <article th:each="post : ${posts}">
+        <p th:text="${post.body}"></p><br/>
+        <p th:text="${post.createAt}"></p><br/>
+        <p th:text="${post.user.username}"></p>
+    </article>
+</div>
+</body>
+</html>

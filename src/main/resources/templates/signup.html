@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header style="display: flex; justify-content : space-around; background-color : #333333;; padding :10px;">
+
+    <h1 style="padding-left:50px; font-size:40px; color : #e6b3ff;">Code Fellows App</h1>
+    <a style="margin:auto; text-decoration: none;border : 3px solid #ccc ;padding :10px;color : #e6b3ff; margin-left:50%;}
+ " href="http://localhost:8080/">Home</a>
+    <a style="margin:auto; text-decoration: none;border : 3px solid #ccc ;padding :10px;color : #e6b3ff;}
+ " href="http://localhost:8080/login">Login</a>
+    <a style="margin:auto; text-decoration: none;border : 3px solid #ccc ;padding :10px;color : #e6b3ff;}
+ "  th:href="@{http://localhost:8080/profile(id=${applicationUser})}">Profile</a>
+</header>
+
+<form style="margin-top :100px; padding: 10px; border:1px solid black; width:40%; text-align:center;" action="/signup" method="post">
+    <h2>Fill Your Information</h2>
+    <label>Username</label>
+    <input style="width:400px;margin-bottom:10px;" type="text" name="username" id="username">
+    <br/>
+    <label>Password</label>
+    <input style="width:400px;margin-bottom:10px;" type="text" name="password" id="password">
+    <br/>
+    <label>First Name</label>
+    <input style="width:400px;margin-bottom:10px;" type="text" name="firstName" id="firstName">
+    <br/>
+    <label>Last Name</label>
+    <input style="width:400px;margin-bottom:10px;"  type="text" name="lastName" id="lastName">
+    <br/>
+    <label>Date Of Birth</label>
+    <input style="width:400px;margin-bottom:10px;"  type="text" name="dateOfBirth" id="dateOfBirth">
+    <br/>
+    <label>Bio</label>
+    <input style="width:400px;margin-bottom:10px;" type="text" name="bio" id="bio">
+    <br/><br/>
+    <input style="background-color: #e6b3ff; padding:15px; width:400px;" type="submit" value="Sign Up">
+</form>
+
+</body>
+</html>
