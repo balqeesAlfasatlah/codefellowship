@@ -23,10 +23,10 @@
 </div>
 
 
-<form th:action="@{/addpost}" method="post">
+<form action="/addpost" method="post">
     <label>Add Post</label>
-    <textarea field="*{body}" name="body" required></textarea>
-    <input type="submit">
+    <textarea id="body" name="body" required></textarea>
+    <input type="submit" value="submit">
 </form>
 
 <div>
@@ -35,7 +35,7 @@
     <article th:each="post : ${posts}">
         <p th:text="${post.body}"></p><br/>
         <p th:text="${post.createAt}"></p><br/>
-        <p th:text="${post.user.username}"></p>
+<!--        <p th:text="${post.user.username}"></p>-->
     </article>
 </div>
 </body>

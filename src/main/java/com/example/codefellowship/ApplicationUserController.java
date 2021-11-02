@@ -1,8 +1,7 @@
 package com.example.codefellowship;
 
-import com.example.codefellowship.ApplicationUser;
-import com.example.codefellowship.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.net.PasswordAuthentication;
 import java.security.Principal;
+import java.util.List;
 
 
 @Controller
@@ -62,14 +61,17 @@ public class ApplicationUserController {
         model.addAttribute("lastName", applicationUser.getLastName());
         model.addAttribute("dateOfBirth", applicationUser.getDateOfBirth());
         model.addAttribute("bio", applicationUser.getBio());
+        model.addAttribute("posts", applicationUser.getPosts());
         return "profile.html";
     }
 
     @PostMapping("/addpost")
-    public RedirectView addPost(@AuthenticationPrincipal ApplicationUser applicationUser , @RequestParam String body){
-        ApplicationUser user = applicationUserRepository.findByUsername(applicationUser.getUsername());
-        Post newPost = new Post(body,user);
+    public RedirectView addPost(@AuthenticationPrincipal ApplicationUser user , @RequestParam String body){
+        ApplicationUser curUser = applicationUserRepository.findByUsername(user.getUsername());
+        Post newPost = new Post(body,curUser);
         postRepository.save(newPost);
         return new RedirectView("/profile");
     }
+
+
 }
